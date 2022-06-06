@@ -1,0 +1,65 @@
+{
+  "name": "uxstudy",
+	"displayName": "uxstudy",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.67.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onCommand:uxstudy.startTask1"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "uxstudy.startTask1",
+				"title": "Start task 1"
+			},
+			{
+				"command": "uxstudy.showStats",
+				"title": "Show File Statistics"
+			},
+			{
+				"command": "uxstudy.writeStats",
+				"title": "Save statistics"
+			},
+			{
+				"command": "uxstudy.stopTask1",
+				"title": "Stop task 1"
+			},
+			{
+				"command": "uxstudy.startTask2",
+				"title": "Start task 2"
+			},
+			{
+				"command": "uxstudy.stopTask2",
+				"title": "Stop task 2"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.67.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^5.21.0",
+		"@typescript-eslint/parser": "^5.21.0",
+		"eslint": "^8.14.0",
+		"glob": "^8.0.1",
+		"mocha": "^9.2.2",
+		"typescript": "^4.6.4",
+		"@vscode/test-electron": "^2.1.3"
+	}
+}
