@@ -21,38 +21,39 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('uxstudy.startTask1', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Starting task 1');
-		// Close all open tabs in the editor
-		vscode.commands.executeCommand('workbench.action.closeAllEditors');
+		if ((!startedTask1) && (!startedTask2)) {
+			vscode.window.showInformationMessage('Starting task 1');
+			// Close all open tabs in the editor
+			vscode.commands.executeCommand('workbench.action.closeAllEditors');
 
-		// Clear recent files
-		vscode.commands.executeCommand('workbench.action.clearRecentFiles');
+			// Clear recent files
+			vscode.commands.executeCommand('workbench.action.clearRecentFiles');
 
-		vscode.commands.executeCommand('workbench.action.clearEditorHistory');
+			vscode.commands.executeCommand('workbench.action.clearEditorHistory');
 
-		vscode.commands.executeCommand('workbench.action.clearCommandHistory');
+			vscode.commands.executeCommand('workbench.action.clearCommandHistory');
 
-		// Ask the user for the participant name
-		vscode.window.showInputBox({
-			placeHolder: "Enter participant name"
-		}).then(participantName => {
-			if (participantName) {
-				pptName = participantName;
-			}
-		});
+			// Ask the user for the participant name
+			vscode.window.showInputBox({
+				placeHolder: "Enter participant name"
+			}).then(participantName => {
+				if (participantName) {
+					pptName = participantName;
+				}
+			});
 
-		totalTimeOnTask = Date.now();
-		startedTask1 = true;
+			totalTimeOnTask = Date.now();
+			startedTask1 = true;
 
-		vscode.window.onDidChangeActiveTextEditor(editor => {
-			if (editor) {
-				console.log("Active editor changed: " + editor.document.fileName);
-				fileActivity.setActiveFile(editor.document.fileName);
-			}
-		});
+			vscode.window.onDidChangeActiveTextEditor(editor => {
+				if (editor) {
+					console.log("Active editor changed: " + editor.document.fileName);
+					fileActivity.setActiveFile(editor.document.fileName);
+				}
+			});
 
-	
 
+		}
 	context.subscriptions.push(disposable);
 	});
 
@@ -134,21 +135,23 @@ export function activate(context: vscode.ExtensionContext) {
 	let command5 = vscode.commands.registerCommand('uxstudy.startTask2', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Starting task 2');
-		// Close all open tabs in the editor
-		vscode.commands.executeCommand('workbench.action.closeAllEditors');
+		if ((!startedTask1) && (!startedTask2)) {
+			vscode.window.showInformationMessage('Starting task 2');
+			// Close all open tabs in the editor
+			vscode.commands.executeCommand('workbench.action.closeAllEditors');
 
-		// Clear recent files
-		vscode.commands.executeCommand('workbench.action.clearRecentFiles');
+			// Clear recent files
+			vscode.commands.executeCommand('workbench.action.clearRecentFiles');
 
-		vscode.commands.executeCommand('workbench.action.clearEditorHistory');
+			vscode.commands.executeCommand('workbench.action.clearEditorHistory');
 
-		vscode.commands.executeCommand('workbench.action.clearCommandHistory');
+			vscode.commands.executeCommand('workbench.action.clearCommandHistory');
 
-		totalTimeOnTask = Date.now();
-		startedTask2 = true;
+			totalTimeOnTask = Date.now();
+			startedTask2 = true;
 
-		fileActivity = new FileActivity();
+			fileActivity = new FileActivity();
+		}
 
 	context.subscriptions.push(command5);
 	});
